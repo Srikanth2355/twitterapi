@@ -14,8 +14,9 @@ app.use((req,res,next)=>{
 app.get('/tweets', (req,res) => {
     const query = req.query.q;
     const count = req.query.count;
+    const maxid = req.query.max_id;
 
-    twitter.get(query,count).then((response) => {
+    twitter.get(query,count,maxid).then((response) => {
         res.status(200).send(response.data)
     }).catch((error) => {
         res.status(400).send(error);
